@@ -25,7 +25,9 @@ class Mesa {
     return this.filosofos;
   }
 
- 
+  getGarfos(): Garfo[] {
+    return this.garfos;
+  }
 }
 
 export default Mesa;

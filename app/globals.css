@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+#table div.filosofo {
+  offset-path: circle(220px);
+  offset-distance: calc(100% * sibling-index() / sibling-count());
+  offset-rotate: 0deg;
+}
+
+#table div.garfo {
+  offset-path: circle(150px);
+  offset-distance: calc(80% + 100% * sibling-index() / sibling-count());
+  offset-rotate: 0deg;
+}
