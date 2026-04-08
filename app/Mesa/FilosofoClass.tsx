@@ -1,11 +1,9 @@
-import Garfo from "./Garfo";
+import Garfo from "./GarfoClass";
 
-type Estados = "pensando" | "comendo" | "esperando";
-
-class Filosofo {
+class FilosofoClass {
   leftGarfo?: Garfo;
   rightGarfo?: Garfo;
-  estado: Estados;
+  estado: EstadosFilosofo;
   id: string;
 
   constructor(id: string) {
@@ -22,12 +20,13 @@ class Filosofo {
   }
 
   comer() {
-    if (!(this.leftGarfo && this.rightGarfo)) return null;
+    if (!(this.leftGarfo && this.rightGarfo) || this.estado == "comendo")
+      return null;
+
     if (this.leftGarfo.isTaken || this.rightGarfo.isTaken) {
       this.estado = "esperando";
       return null;
     }
-    if (this.estado == "comendo") return null;
 
     this.estado = "comendo";
     this.leftGarfo.isTaken = true;
@@ -35,8 +34,8 @@ class Filosofo {
   }
 
   largar() {
-    if (!(this.leftGarfo && this.rightGarfo)) return null;
-    if (this.estado != "comendo") return null;
+    if (!(this.leftGarfo && this.rightGarfo) || this.estado != "comendo")
+      return null;
 
     this.estado = "pensando";
     this.leftGarfo.isTaken = false;
@@ -44,4 +43,4 @@ class Filosofo {
   }
 }
 
-export default Filosofo;
+export default FilosofoClass;

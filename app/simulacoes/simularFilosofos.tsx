@@ -1,4 +1,4 @@
-import Filosofo from "../mesa/Filosofo";
+import Filosofo from "../Mesa/FilosofoClass";
 
 export const simularDefault = (filosofos: Filosofo[]) => {
   return [

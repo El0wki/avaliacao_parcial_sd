@@ -1,4 +1,4 @@
-class Garfo {
+class GarfoClass {
   isTaken: boolean;
   id: string;
   constructor(id: string) {
@@ -7,4 +7,4 @@ class Garfo {
   }
 }
 
-export default Garfo;
+export default GarfoClass;

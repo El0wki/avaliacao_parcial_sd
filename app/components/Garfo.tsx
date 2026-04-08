@@ -1,18 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import GarfoClass from "../mesa/Garfo";
+import { useState, useEffect } from "react";
+import GarfoClass from "../Mesa/GarfoClass";
+import { estadosGarfosConfig } from "./config";
 
 type GarfoComponent = {
   garfo: GarfoClass;
 };
 
 const Garfo = ({ garfo }: GarfoComponent) => {
-  const [_, update] = useState(0);
-  useEffect(() => {}, [garfo.isTaken]);
+  const [, forceUpdate] = useState({});
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      forceUpdate({});
+    }, 200);
+
+    return () => clearInterval(interval);
+  }, [garfo]);
+
   return (
     <div
-      className={`h-25 w-25  rounded-full flex items-center justify-center ${garfo.isTaken ? "bg-red-500" : "bg-green-500"}`}>
+      className={`h-20 w-20 rounded-full flex items-center justify-center ${
+        estadosGarfosConfig[String(garfo.isTaken)]
+      }`}>
       {garfo.id}
     </div>
   );
