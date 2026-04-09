@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import FilosofoClass from "../Mesa/FilosofoClass";
-import { useMesaStore } from "./store";
-import { estadosFilosofosConfig } from "./config";
+import FilosofoClass from "../../classes/default/FilosofoClass";
+import { estadosFilosofosConfig } from "../config";
 
 type FilosofoComponent = {
   filosofo: FilosofoClass;

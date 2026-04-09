@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useMemo } from "react";
-import MesaClass from "../Mesa/MesaClass";
-import FilosofoClass from "../Mesa/FilosofoClass";
-import GarfoClass from "../Mesa/GarfoClass";
+import MesaClass from "../../classes/default/MesaClass";
+import FilosofoClass from "../../classes/default/FilosofoClass";
+import GarfoClass from "../../classes/default/GarfoClass";
 import Filosofo from "./Filosofo";
 import Garfo from "./Garfo";
 
@@ -21,7 +21,9 @@ const Mesa = ({ NUM_FILOSOFOS }: MesaComponent) => {
   const garfos = mesaClass.getGarfos();
 
   return (
-    <>
+    <div
+      id="table"
+      className="flex place-content-center place-items-center h-max">
       {Array.from({ length: NUM_FILOSOFOS }, (_, idx) => {
         const filosofo = filosofos[idx];
         const garfo = garfos[idx];
@@ -36,7 +38,7 @@ const Mesa = ({ NUM_FILOSOFOS }: MesaComponent) => {
           </React.Fragment>
         );
       })}
-    </>
+    </div>
   );
 };
 

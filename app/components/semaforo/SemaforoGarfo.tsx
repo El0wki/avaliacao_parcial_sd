@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import GarfoClass from "../Mesa/GarfoClass";
-import { estadosGarfosConfig } from "./config";
+import SemaforoGarfoClass from "../../classes/semaforo/SemaforoGarfo";
+import { estadosGarfosConfig } from "../config";
 
-type GarfoComponent = {
-  garfo: GarfoClass;
+type SemaforoGarfoProps = {
+  garfo: SemaforoGarfoClass;
 };
 
-const Garfo = ({ garfo }: GarfoComponent) => {
+const SemaforoGarfo = ({ garfo }: SemaforoGarfoProps) => {
   const [, forceUpdate] = useState({});
 
   useEffect(() => {
@@ -29,4 +29,4 @@ const Garfo = ({ garfo }: GarfoComponent) => {
   );
 };
 
-export default Garfo;
+export default SemaforoGarfo;

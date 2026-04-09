@@ -1,26 +1,23 @@
 class Semaforo {
   private contador: number;
-  private fila: (() => void)[];
+  private fila: (() => void)[] = [];
 
   constructor(valor: number) {
     this.contador = valor;
-    this.fila = [];
   }
 
-  acquire(): Promise<void> {
+  async acquire(): Promise<void> {
     if (this.contador > 0) {
       this.contador--;
-      return Promise.resolve();
+      return;
     }
-    return new Promise((resolve) => {
-      this.fila.push(resolve);
-    });
+    await new Promise<void>((resolve) => this.fila.push(resolve));
   }
 
   release(): void {
     if (this.fila.length > 0) {
-      const proximo = this.fila.shift();
-      proximo!();
+      const next = this.fila.shift();
+      if (next) next();
     } else {
       this.contador++;
     }

@@ -1,6 +1,6 @@
 export const estadosFilosofosConfig: Record<EstadosFilosofo, string> = {
+  pensando: "bg-green-500",
   comendo: "bg-red-500",
-  pensando: "bg-blue-500",
   esperando: "bg-yellow-500",
 };
 
