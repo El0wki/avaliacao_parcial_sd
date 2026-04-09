@@ -1,21 +1,21 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import SemaforoMesaClass from "../../classes/semaforo/SemaforoMesa";
-import SemaforoFilosofo from "./SemaforoFilosofo";
-import SemaforoGarfo from "./SemaforoGarfo";
+import MonitorMesaClass from "../../classes/monitor/MonitorMesa";
+import MonitorFilosofo from "./MonitorFilosofo";
+import MonitorGarfo from "./MonitorGarfo";
 
-type SemaforoMesaProps = {
+type MonitorMesaProps = {
   NUM_FILOSOFOS: number;
   duracao?: number;
 };
 
-const SemaforoMesa = ({ NUM_FILOSOFOS, duracao = 0 }: SemaforoMesaProps) => {
+const MonitorMesa = ({ NUM_FILOSOFOS, duracao = 0 }: MonitorMesaProps) => {
   const [, setUpdate] = useState({});
-  const mesaRef = useRef<SemaforoMesaClass | null>(null);
+  const mesaRef = useRef<MonitorMesaClass | null>(null);
 
   if (!mesaRef.current) {
-    mesaRef.current = new SemaforoMesaClass(
+    mesaRef.current = new MonitorMesaClass(
       NUM_FILOSOFOS,
       () => {
         setUpdate({});
@@ -44,7 +44,7 @@ const SemaforoMesa = ({ NUM_FILOSOFOS, duracao = 0 }: SemaforoMesaProps) => {
   const garfos = mesaClass.getGarfos();
 
   return (
-    <div id="semaforo-mesa-container">
+    <div id="monitor-mesa-container">
       <div className="text-center text-white p-2 text-sm">
         ⏱️ {(mesaClass.getTempoRestante() / 1000).toFixed(1)}s
       </div>
@@ -58,10 +58,10 @@ const SemaforoMesa = ({ NUM_FILOSOFOS, duracao = 0 }: SemaforoMesaProps) => {
           return (
             <React.Fragment key={idx}>
               <div className="filosofo">
-                <SemaforoFilosofo filosofo={filosofo} />
+                <MonitorFilosofo filosofo={filosofo} />
               </div>
               <div className="garfo">
-                <SemaforoGarfo garfo={garfo} />
+                <MonitorGarfo garfo={garfo} />
               </div>
             </React.Fragment>
           );
@@ -71,4 +71,4 @@ const SemaforoMesa = ({ NUM_FILOSOFOS, duracao = 0 }: SemaforoMesaProps) => {
   );
 };
 
-export default SemaforoMesa;
+export default MonitorMesa;
